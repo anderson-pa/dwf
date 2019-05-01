@@ -520,7 +520,7 @@ class DwfAnalogOut(Dwf):
         _l.FDwfAnalogOutNodeFrequencySet(
             self.hdwf, idxChannel, node, hzFrequency)
     def nodeFrequencyGet(self, idxChannel, node):
-        return _l.FDwfAnalogOutNodeFrequencySet(self.hdwf, idxChannel, node)
+        return _l.FDwfAnalogOutNodeFrequencyGet(self.hdwf, idxChannel, node)
 
 # Carrier Amplitude or Modulation Index 
     def nodeAmplitudeInfo(self, idxChannel, node):
