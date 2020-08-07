@@ -457,7 +457,7 @@ class DwfAnalogOut(Dwf):
     def waitSet(self, idxChannel, secWait):
         _l.FDwfAnalogOutWaitSet(self.hdwf, idxChannel, secWait)
     def waitGet(self, idxChannel):
-        return _l.FDwfAnalogOutWaitGet(self, idxChannel)
+        return _l.FDwfAnalogOutWaitGet(self.hdwf, idxChannel)
 
     def repeatInfo(self, idxChannel):
         return _l.FDwfAnalogOutRepeatInfo(self.hdwf, idxChannel)
@@ -524,7 +524,7 @@ class DwfAnalogOut(Dwf):
 
 # Carrier Amplitude or Modulation Index 
     def nodeAmplitudeInfo(self, idxChannel, node):
-        return _l.FDwfAnalogOutNodeAmplitudeInfo(self, idxChannel, node)
+        return _l.FDwfAnalogOutNodeAmplitudeInfo(self.hdwf, idxChannel, node)
     def nodeAmplitudeSet(self, idxChannel, node, amplitude):
         _l.FDwfAnalogOutNodeAmplitudeSet(self.hdwf, idxChannel, node, amplitude)
     def nodeAmplitudeGet(self, idxChannel, node):
@@ -658,7 +658,7 @@ class DwfDigitalIO(Dwf):
             super(DwfDigitalIO, self).__init__(idxDevice, idxCfg)
     def reset(self, parent=False):
         if parent: super(DwfDigitalIO, self).reset()
-        _l.FDwfDigitalIOReset(sef_l.hdwf)
+        _l.FDwfDigitalIOReset(self.hdwf)
     def configure(self):
         return _l.FDwfDigitalIOConfigure(self.hdwf)
     def status(self):
@@ -917,7 +917,7 @@ class DwfDigitalOut(Dwf):
 
     def typeInfo(self, idxChannel):
         return _make_set(
-            _l.FDwfDigitalOutTypeInfo(sef.hdwf, idxChannel), self.TYPE)
+            _l.FDwfDigitalOutTypeInfo(self.hdwf, idxChannel), self.TYPE)
     def typeSet(self, idxChannel, output_type):
         _l.FDwfDigitalOutTypeSet(self.hdwf, idxChannel, output_type)
     def typeGet(self, idxChannel):
